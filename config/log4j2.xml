@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="HomeWatcher">
+	<Appenders>
+		<Console name="console">
+			<PatternLayout pattern="%d %p %C{.} [%t] %m%n" />
+		</Console>
+		<RollingFile name="file" fileName="log/HomeWatcher.log"
+			filePattern="log/figaro-%d{MM-dd-yyyy}-%i.log.gz">">
+			<PatternLayout pattern="%d %p %C{.} [%t] %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="20 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.lacabradev" level="debug">
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</Root>
+	</Loggers>
+</Configuration>
